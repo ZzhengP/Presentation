@@ -43,7 +43,7 @@
 \newcommand{\BLACK}{\color[rgb]{0,0,0}}
 
 \title[] % (optional, use only with long paper titles)
-{Génération de la trajectoire optimale en ligne avec la garantie de sécurité dans un espace de travail partagé
+{Génération de  trajectoire optimale en ligne avec garantie de sécurité dans un espace de travail partagé
 }
 
 \author[P. ZHENG] % (optional, use only with lots of authors)
@@ -80,12 +80,12 @@
 	\tableofcontents[currentsection]
 \end{frame}
 }
- \AtBeginSubsection[]
- {
-   \begin{frame}<beamer>{Outline}
-     \tableofcontents[currentsection,currentsubsection]
-   \end{frame}
-}
+% \AtBeginSubsection[]
+ %{
+  % \begin{frame}<beamer>{Outline}
+    % \tableofcontents[currentsection,currentsubsection]
+  % \end{frame}
+%}
 
 
 % If you wish to uncover everything in a step-wise fashion, uncomment
@@ -181,7 +181,7 @@
 \end{frame}
 
 \begin{frame}
-\textbf{Un marché avec une forte potentielle en robot collaboratif:}
+\textbf{Un marché avec un fort potentiel en robot collaboratif:}
 		\begin{figure}
 		\centering
 		\includegraphics[width=0.7\columnwidth, height=0.6\textwidth]{figures/table}
@@ -210,13 +210,13 @@
 \end{figure}
 \end{frame}
 \begin{frame}
-\large{\textbf{Quelques importantes critères:} }
+\large{\textbf{Quelques critères importants :} }
 \newline
 
 \begin{itemize}
 \item  \textbf{Réactivité:} Le robot doit prendre en compte de façon réactive les nouvelles informations provenant des capteurs pour s'adapter à l'environnement. 
 \item \textbf{Performance:} Le robot doit réaliser ses tâches de façon optimal.
-\item \textbf{Contrainte satisfaction:} Le robot doit toujours vérifier les contraintes. 
+\item \textbf{Satisfaction des contraintes :} Le robot doit toujours vérifier ses propres contraintes physiques et celles de son environnement . 
 
 \end{itemize}
 \end{frame}
@@ -225,7 +225,7 @@
 \begin{frame}
 
 \begin{block}{LWR}
-	Le robot dédié aux applications dans un espace de travail avec humain. Voici quelques caractéristiques: 
+	Un robot dédié aux applications dans un espace de travail partagé avec un humain. Voici quelques caractéristiques: 
 \end{block}
 \begin{small}
 	
@@ -251,7 +251,7 @@
 \end{columns}
 \end{frame}
 \begin{frame}
-\textbf{évaluation de la sécurité pour human-robot intéraction: }
+\textbf{évaluation de la sécurité de l'interaction pour homme-robot par HIC (Head Injury Criteria) : }
 \begin{figure}
 \centering
 \includegraphics[width=0.7\columnwidth, height=0.15\textwidth]{figures/formule_HIC}
@@ -269,8 +269,8 @@
 
 \section{Approche contrôle optimale }
 \begin{frame}
-\begin{block} {Modèle prédictive contrôle}
-MPC est une méthode de contrôle avancée qui détermine l'action de contrôle en résolu en ligne à chaque pas d'échantillonnage de temps un problème d'optimisation en boucle ouverte, basée sur l'état actuel du système. 
+\begin{block} {Model Predictive Control}
+MPC est une méthode de contrôle qui détermine l'action de contrôle en résolvant en ligne à chaque pas d'échantillonnage de temps un problème d'optimisation en boucle ouverte, basé sur l'état actuel du système. 
 \end{block}
 \begin{columns}
 	\column{0.5\textwidth}
@@ -290,14 +290,14 @@ MPC est une méthode de contrôle avancée qui détermine l'action de contrôle en ré
 
 \begin{frame}
 \begin{block}{Pourquoi utiliser MPC dans notre travail ? }
- 	MPC est capable de contrôler des systèmes MIMO (multi-input and multi-output) sous contraintes. L'action n'est pas non seulement déterminée à partir de l'état actuel, mais aussi prendre en compte l'évolution du système et l'environnement dans le future. 
+ 	MPC est capable de contrôler des systèmes MIMO (multi-input and multi-output) sous contraintes. L'action n'est pas non seulement déterminée à partir de l'état actuel, mais reprend aussi  en compte l'évolution du système et l'environnement dans le futur. 
 \end{block}
 \begin{columns}
 \column{0.4\textwidth}
 	\begin{itemize}
 		\item{Définir un objectif}
 		\begin{itemize}
-			\item{Suivie de la trajectoire}
+			\item{Suivi de la trajectoire}
 		\end{itemize}
 		\item{Définir les contraintes}
 		\begin{itemize}
@@ -310,7 +310,7 @@ MPC est une méthode de contrôle avancée qui détermine l'action de contrôle en ré
 \column{0.6\textwidth}
 	\begin{figure}
 	\centering
-	\includegraphics[width=0.9\columnwidth, height=0.6\textwidth]{figures/schema_control.pdf}
+	\includegraphics[width=0.9\columnwidth, height=0.6\textwidth]{figures/schema_control}
 \end{figure}
 
 \end{columns}
@@ -353,10 +353,10 @@ MPC est une méthode de contrôle avancée qui détermine l'action de contrôle en ré
 	 	\end{align}
 	 \end{subequations}
  
-L'équation (\ref{eq:sp_final:c7})  assure à la fois la faisabilité récurrente et permet d'introduire la notion de "Passive safety" dans notre schéma MPC.
+L'équation (\ref{eq:sp_final:c7})  assure à la fois la faisabilité récursive et permet d'introduire la notion de "Passive safety" dans notre schéma MPC.
 
 \begin{block}{Passive safety}
-	Il est impossible de garantir qu'il y a aucune collision dans un environnement partiel inconnu, mais au moins on peut garantir s'il y a une collision, le robot est à l'arrêt. 
+	Il est impossible de garantir qu'il y a aucune collision dans un environnement partiel inconnu, mais au moins on peut garantir que s'il y a une collision, le robot est à l'arrêt au moment de la collision. 
 \end{block}
 \end{frame}
 
@@ -366,7 +366,7 @@ L'équation (\ref{eq:sp_final:c7})  assure à la fois la faisabilité récurrente et
 
 \column{0.5\textwidth}
 \begin{itemize}
-	\item Définir contrainte d'évitement en temps continu
+	\item Définir une contrainte d'évitement en temps continu
 \end{itemize}
 \begin{figure}
 	\centering
@@ -375,14 +375,14 @@ L'équation (\ref{eq:sp_final:c7})  assure à la fois la faisabilité récurrente et
 
 \column{0.5\textwidth}
 \begin{itemize}
-\item $\{r^1,\,r^2,\ldots\}$  sommets liés à la personne: 
+\item $\{r_{1},\,r_{2}, \ldots\}$  sommets liés à la personne: 
 \begin{subequations}\label{eq-ccap}
 	\begin{alignat*}{2}
 	&a_kp_k^j&&\leq b_k,\\
 	&a_kp_{k+1}^j&&\leq b_k,
 	\end{alignat*}
 \end{subequations}
-\item $\{p^1,\,p^2,\ldots\}$  sommets liés au robot:
+\item $\{p_{1},\,p_{2},\ldots\}$  sommets liés au robot:
 \begin{subequations}\label{eq-ccar}
 	\begin{alignat*}{2}
 	&a_kr_k^i&&\geq b_k+d,\\
@@ -391,16 +391,16 @@ L'équation (\ref{eq:sp_final:c7})  assure à la fois la faisabilité récurrente et
 \end{subequations}
 \end{itemize}
 \end{columns}
-\begin{block}{Plan de séparateur}
-	S'il existe un plan $a_{k}x=b_{k}$ qui sépare les sommets de la personne d'un côté et les sommets du robot d'autre côté durant l'intervalle de temps $t_{k}$ et $t_{k+1}$, alors on dit qu'ils ne sont pas en collision pendant cet intervalle de temps. 
+\begin{block}{Plan séparateur}
+	S'il existe un plan $a_{k}x=b_{k}$ qui sépare les sommets de la personne d'un côté et les sommets du robot de l'autre côté durant l'intervalle de temps $t_{k}$ et $t_{k+1}$, alors on sait qu'ils ne sont pas en collision pendant cet intervalle de temps. 
 \end{block}
 \end{frame}
 
 \begin{frame}
-	Notre problème de la planification se divise donc en deux sous problèmes: 
+	Notre problème de planification se divise donc en deux sous problèmes: 
 	\begin{itemize}
-	\item calcule le plan de séparateur: 
-			Pour chaque intervalle de temps $[k,\,k+1]$, $k\in\{0,\ldots N-1\}$, on calcule un plan de séparateur avec un LPs (Linear programming) :
+	\item calcule d'un plan séparateur: 
+			Pour chaque intervalle de temps $[k,\,k+1]$, $k\in\{0,\ldots N-1\}$, on calcule un plan de séparateur avec un LP (Linear Program) :
 		%
 		\begin{subequations}\label{eq:lp}
 			\begin{align*}
@@ -442,15 +442,15 @@ L'équation (\ref{eq:sp_final:c7})  assure à la fois la faisabilité récurrente et
 
 \subsection{Choix de l'horizon de la prédiction}
 \begin{frame}
-\begin{block}{borne inférieur}
-	Le robot doit être en arrêt à la fin de l'horizon de la prédiction  $\rightarrow$ T$_{low}$ = $\frac{V_{max}}{a_{max}}$ 
+\begin{block}{borne inférieure}
+	Le robot doit être en arrêt à la fin de l'horizon de prédiction  $\rightarrow$ T$_{low}$ = $\frac{V_{max}}{a_{max}}$ 
 \end{block}
 Prenons $V_{max}$ = 2~m.s$^{-1}$ et $a_{max}$ = 10~m.s$^{-2}$ , T$_{low}$ = 0.2~s. 
 
-\begin{block}{borne supérieur}
+\begin{block}{borne supérieure}
 	La vitesse de la main de l'humain en situation régulière est 1~m.s$^{-1}$  avec une accélération de 5~m.s$^{-2}$. 
 \end{block}
-Considérons $d_{safe}$ = 20~cm,  T$_{upper}$ = 0.3~s. La prédiction du mouvement de la personne peut être pas du tout précis si on prédit trop. 
+Considérons $d_{safe}$ = 20~cm,  T$_{upper}$ = 0.3~s. La prédiction du mouvement de la personne peut être pas du tout précis si on essaie prédire trop loin dans le futur. 
 \end{frame}
 \section{Approche perception}
 
@@ -461,7 +461,7 @@ Considérons $d_{safe}$ = 20~cm,  T$_{upper}$ = 0.3~s. La prédiction du mouvement
 \end{block}
 L'horizon de la prédiction est égale à 0.3~s, le pas d'échantillonnage est 0.05~s, la distance de sécurité est égale à 0.2~m. 
 	\begin{itemize}	
-		\item Non atteignable objectif
+		\item Objectif non atteignable 
 	\end{itemize}
 \begin{columns}
 \column{0.5\textwidth}
@@ -480,7 +480,7 @@ L'horizon de la prédiction est égale à 0.3~s, le pas d'échantillonnage est 0.05~
 
 \begin{frame}
 \begin{itemize}
- \item	Réaliser une tâche en présence de la pertubartion d'une personne
+ \item	Réaliser une tâche en présence d'une personne
 	\begin{figure}
 		\centering
 		\includegraphics[width=0.8\columnwidth, height=0.6\textwidth]{figures/combine}

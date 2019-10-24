@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.1.10)  24 OCT 2019 10:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.1.10)  24 OCT 2019 14:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1245,10 +1245,7 @@ Non-PDF special ignored!
 ] (./presentationTeam.toc) [3
 
 ]
-(./presentationTeam.toc) [4
-
-]
-<figures/industry4.jpg, id=261, 698.61pt x 358.941pt>
+<figures/industry4.jpg, id=223, 698.61pt x 358.941pt>
 File: figures/industry4.jpg Graphic file (type jpg)
 <use figures/industry4.jpg>
 Package pdftex.def Info: figures/industry4.jpg  used on input line 144.
@@ -1297,28 +1294,23 @@ LaTeX Font Info:    Font shape `OT1/phv/bx/it' in size <8> not available
 (Font)              Font shape `OT1/phv/b/it' tried instead on input line 144.
 LaTeX Font Info:    Font shape `OT1/phv/b/it' in size <8> not available
 (Font)              Font shape `OT1/phv/b/sl' tried instead on input line 144.
- [5
+ [4
 
- <./figures/industry4.jpg>] (./presentationTeam.toc) [6
-
-]
-<figures/circular.png, id=328, 947.54pt x 529.98pt>
+ <./figures/industry4.jpg>]
+<figures/circular.png, id=251, 947.54pt x 529.98pt>
 File: figures/circular.png Graphic file (type png)
 <use figures/circular.png>
 Package pdftex.def Info: figures/circular.png  used on input line 158.
 (pdftex.def)             Requested size: 309.76859pt x 154.8871pt.
- [7
+ [5
 
  <./figures/circular.png>]
-(./presentationTeam.toc) [8
-
-]
-<figures/robots.pdf, id=396, 494.51395pt x 580.74927pt>
+<figures/robots.pdf, id=279, 494.51395pt x 580.74927pt>
 File: figures/robots.pdf Graphic file (type pdf)
 <use figures/robots.pdf>
 Package pdftex.def Info: figures/robots.pdf  used on input line 181.
 (pdftex.def)             Requested size: 137.6782pt x 154.8903pt.
-<figures/CR_market.jpg, id=397, 481.8pt x 301.125pt>
+<figures/CR_market.jpg, id=280, 481.8pt x 301.125pt>
 File: figures/CR_market.jpg Graphic file (type jpg)
 <use figures/CR_market.jpg>
 Package pdftex.def Info: figures/CR_market.jpg  used on input line 181.
@@ -1327,10 +1319,10 @@ Package pdftex.def Info: figures/CR_market.jpg  used on input line 181.
 Overfull \vbox (9.21959pt too high) detected at line 181
  []
 
-[9
+[6
 
  <./figures/robots.pdf> <./figures/CR_market.jpg>]
-<figures/table.png, id=435, 622.325pt x 562.1pt>
+<figures/table.png, id=319, 622.325pt x 562.1pt>
 File: figures/table.png Graphic file (type png)
 <use figures/table.png>
 Package pdftex.def Info: figures/table.png  used on input line 190.
@@ -1339,17 +1331,17 @@ Package pdftex.def Info: figures/table.png  used on input line 190.
 Overfull \vbox (8.75453pt too high) detected at line 190
  []
 
-[10
+[7
 
- <./figures/table.png>] (./presentationTeam.toc) [11
+ <./figures/table.png>] (./presentationTeam.toc) [8
 
 ]
-<figures/robotHitPerson.png, id=506, 481.8pt x 240.9pt>
+<figures/robotHitPerson.png, id=390, 481.8pt x 240.9pt>
 File: figures/robotHitPerson.png Graphic file (type png)
 <use figures/robotHitPerson.png>
 Package pdftex.def Info: figures/robotHitPerson.png  used on input line 211.
 (pdftex.def)             Requested size: 275.36401pt x 172.1025pt.
- [12
+ [9
 
  <./figures/robotHitPerson.png>]
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <12> not available
@@ -1360,17 +1352,17 @@ LaTeX Font Info:    Font shape `OT1/phv/bx/it' in size <12> not available
 (Font)              Font shape `OT1/phv/b/it' tried instead on input line 222.
 LaTeX Font Info:    Font shape `OT1/phv/b/it' in size <12> not available
 (Font)              Font shape `OT1/phv/b/sl' tried instead on input line 222.
- [13
+ [10
 
-] (./presentationTeam.toc) [14
+] (./presentationTeam.toc) [11
 
 ]
-<figures/DLR_1.png, id=599, 658.46pt x 525.965pt>
+<figures/DLR_1.png, id=483, 658.46pt x 525.965pt>
 File: figures/DLR_1.png Graphic file (type png)
 <use figures/DLR_1.png>
 Package pdftex.def Info: figures/DLR_1.png  used on input line 252.
 (pdftex.def)             Requested size: 185.8646pt x 165.21436pt.
-<figures/DLR_2.png, id=600, 552.0625pt x 407.5225pt>
+<figures/DLR_2.png, id=484, 552.0625pt x 407.5225pt>
 File: figures/DLR_2.png Graphic file (type png)
 <use figures/DLR_2.png>
 Package pdftex.def Info: figures/DLR_2.png  used on input line 252.
@@ -1384,46 +1376,64 @@ Overfull \hbox (14.42159pt too wide) detected at line 252
 Overfull \vbox (39.25261pt too high) detected at line 252
  []
 
-[15
+[12
 
  <./figures/DLR_1.png> <./figures/DLR_2.png>]
-<figures/formule_HIC.png, id=631, 579.16376pt x 117.43875pt>
+<figures/formule_HIC.png, id=515, 579.16376pt x 117.43875pt>
 File: figures/formule_HIC.png Graphic file (type png)
 <use figures/formule_HIC.png>
 Package pdftex.def Info: figures/formule_HIC.png  used on input line 267.
 (pdftex.def)             Requested size: 240.93173pt x 51.6266pt.
-<figures/HIC.png, id=632, 755.82375pt x 297.11pt>
+<figures/HIC.png, id=516, 755.82375pt x 297.11pt>
 File: figures/HIC.png Graphic file (type png)
 <use figures/HIC.png>
 Package pdftex.def Info: figures/HIC.png  used on input line 267.
 (pdftex.def)             Requested size: 344.18866pt x 137.6787pt.
- [16
 
- <./figures/formule_HIC.png> <./figures/HIC.png>] (./presentationTeam.toc) [17
+Overfull \vbox (4.76472pt too high) detected at line 267
+ []
+
+[13
+
+ <./figures/formule_HIC.png> <./figures/HIC.png>] (./presentationTeam.toc)
+[14
 
 ]
-<figures/mpc_illu.png, id=701, 451.6875pt x 621.07031pt>
+<figures/mpc_illu.png, id=585, 451.6875pt x 621.07031pt>
 File: figures/mpc_illu.png Graphic file (type png)
 <use figures/mpc_illu.png>
 Package pdftex.def Info: figures/mpc_illu.png  used on input line 289.
 (pdftex.def)             Requested size: 154.88812pt x 120.46854pt.
-<figures/MPC_plant.png, id=702, 402.50375pt x 285.065pt>
+<figures/MPC_plant.png, id=586, 402.50375pt x 285.065pt>
 File: figures/MPC_plant.png Graphic file (type png)
 <use figures/MPC_plant.png>
 Package pdftex.def Info: figures/MPC_plant.png  used on input line 289.
 (pdftex.def)             Requested size: 154.88765pt x 120.46593pt.
- [18
+ [15
 
  <./figures/mpc_illu.png> <./figures/MPC_plant.png>]
-<figures/schema_control.pdf, id=731, 548.0475pt x 292.09125pt>
-File: figures/schema_control.pdf Graphic file (type pdf)
-<use figures/schema_control.pdf>
-Package pdftex.def Info: figures/schema_control.pdf  used on input line 317.
-(pdftex.def)             Requested size: 185.86537pt x 123.91205pt.
+<figures/schema_control.png, id=614, 971.63pt x 518.93875pt>
+File: figures/schema_control.png Graphic file (type png)
+<use figures/schema_control.png>
+Package pdftex.def Info: figures/schema_control.png  used on input line 317.
+(pdftex.def)             Requested size: 185.857pt x 123.91437pt.
+ [16
+
+ <./figures/schema_control.png>] [17
+
+] [18
+
+]
+<figures/illu_continous_separation.pdf, id=703, 440.40462pt x 343.84006pt>
+File: figures/illu_continous_separation.pdf Graphic file (type pdf)
+<use figures/illu_continous_separation.pdf>
+Package pdftex.def Info: figures/illu_continous_separation.pdf  used on input l
+ine 397.
+(pdftex.def)             Requested size: 137.67986pt x 103.25774pt.
  [19
 
- <./figures/schema_control.pdf>]
-(./presentationTeam.toc) [20
+ <./figures/illu_continous_separation.pdf>]
+[20
 
 ] [21
 
@@ -1431,53 +1441,34 @@ Package pdftex.def Info: figures/schema_control.pdf  used on input line 317.
 
 ] (./presentationTeam.toc) [23
 
-]
-<figures/illu_continous_separation.pdf, id=908, 440.40462pt x 343.84006pt>
-File: figures/illu_continous_separation.pdf Graphic file (type pdf)
-<use figures/illu_continous_separation.pdf>
-Package pdftex.def Info: figures/illu_continous_separation.pdf  used on input l
-ine 397.
-(pdftex.def)             Requested size: 137.67986pt x 103.25774pt.
- [24
-
- <./figures/illu_continous_separation.pdf>] [25
-
-] [26
-
-] (./presentationTeam.toc)
-[27
-
-] [28
-
-] (./presentationTeam.toc) [29
-
-] (./presentationTeam.toc) [30
+] (./presentationTeam.toc) [24
 
 ]
-<figures/N=6_t=3.png, id=1156, 424.4658pt x 296.7888pt>
+<figures/N=6_t=3.png, id=914, 424.4658pt x 296.7888pt>
 File: figures/N=6_t=3.png Graphic file (type png)
 <use figures/N=6_t=3.png>
 Package pdftex.def Info: figures/N=6_t=3.png  used on input line 479.
 (pdftex.def)             Requested size: 154.88663pt x 120.47052pt.
-<figures/Xlim.png, id=1157, 491.436pt x 332.442pt>
+<figures/Xlim.png, id=915, 491.436pt x 332.442pt>
 File: figures/Xlim.png Graphic file (type png)
 <use figures/Xlim.png>
 Package pdftex.def Info: figures/Xlim.png  used on input line 479.
 (pdftex.def)             Requested size: 154.88564pt x 120.46529pt.
- [31
+
+[25
 
  <./figures/N=6_t=3.png> <./figures/Xlim.png>]
-<figures/combine.pdf, id=1187, 423.31812pt x 325.4002pt>
+<figures/combine.pdf, id=946, 423.31812pt x 325.4002pt>
 File: figures/combine.pdf Graphic file (type pdf)
 <use figures/combine.pdf>
 Package pdftex.def Info: figures/combine.pdf  used on input line 489.
 (pdftex.def)             Requested size: 275.36021pt x 206.52255pt.
- [32
+ [26
 
- <./figures/combine.pdf>] [33
+ <./figures/combine.pdf>]
+[27
 
-]
-(./presentationTeam.bbl) [34
+] (./presentationTeam.bbl) [28
 
  </usr/local/texlive/2018/texmf-dist/tex/latex/beamer/beamericonarticle.pdf>]
 \tf@nav=\write7
@@ -1495,13 +1486,13 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 500.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 500.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 500.
 Package rerunfilecheck Info: File `presentationTeam.out' has not changed.
-(rerunfilecheck)             Checksum: 1B15360623C841542B64168FC30446E5;814.
+(rerunfilecheck)             Checksum: F3692440F1F8B8DC0BEEC91EF2247538;814.
  ) 
 Here is how much of TeX's memory you used:
- 33678 strings out of 492649
- 822988 string characters out of 6129622
+ 33642 strings out of 492649
+ 822498 string characters out of 6129622
  1080646 words of memory out of 5000000
- 36700 multiletter control sequences out of 15000+600000
+ 36688 multiletter control sequences out of 15000+600000
  51545 words of font info for 111 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  64i,19n,98p,783b,676s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1519,10 +1510,10 @@ texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2
 ve/2018/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2018
 /texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2018/texmf-
 dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on presentationTeam.pdf (34 pages, 5538069 bytes).
+Output written on presentationTeam.pdf (28 pages, 5681901 bytes).
 PDF statistics:
- 1372 PDF objects out of 1440 (max. 8388607)
- 1225 compressed objects within 13 object streams
- 91 named destinations out of 1000 (max. 500000)
+ 1128 PDF objects out of 1200 (max. 8388607)
+ 991 compressed objects within 10 object streams
+ 79 named destinations out of 1000 (max. 500000)
  368 words of extra memory for PDF output out of 10000 (max. 10000000)
 
