@@ -1,0 +1,219 @@
+
+
+
+
+%\documentclass[8 pt]{beamer}
+\documentclass[10 pt]{beamer}
+
+\mode<presentation>
+{
+  \usetheme{Warsaw}
+  \useoutertheme{infolines}
+  \usecolortheme{ste}
+  \setbeamercovered{transparent}
+}
+
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+%\usepackage{stmaryrd}
+\usepackage[english]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{times}
+\usepackage{bm}
+\usepackage[OT1]{fontenc}
+%\usepackage{algorithmic}
+\usepackage{verbatim}
+\usepackage{tikz} % TikZ + Libraries
+\usetikzlibrary{arrows,shapes,positioning,shadows,trees}
+\usepackage{pgfplots}
+\usepackage{psfrag}
+
+%==================================================
+% Custom Definitions
+
+\newcommand{\RED}{\color[rgb]{0.90,0,0}}
+\newcommand{\BLUE}{\color[rgb]{0,0,0.69}}
+\newcommand{\GREEN}{\color[rgb]{0,0.69,0}}
+\newcommand{\PURPLE}{\color[rgb]{0,0.69,0.69}}
+\newcommand{\BLACK}{\color[rgb]{0,0,0}}
+
+%\includeonlyframes{current}
+
+\title[CMake short tuto] % (optional, use only with long paper titles)
+{CMake: A very simple introduction}
+
+\author[P. ZHENG] % (optional, use only with lots of authors)
+{ {\bf Pu ZHENG} \\ PhD student, IMAG, Grenoble \\ {\it pu.zheng@univ-grenoble-alpes.fr}}
+
+\institute[IMAG] % (optional, but mostly needed)
+{IMAG}
+% - Use the \inst command only if there are several affiliations.
+% - Keep it simple, no one is interested in your street address.
+
+\date[03/09/2019] % (optional, should be abbreviation of conference name)
+{}
+% - Either use conference name or its abbreviation.
+% - Not really informative to the audience, more for people (including
+%   yourself) who are reading the slides online
+
+\subject{}
+% This is only inserted into the PDF information catalog. Can be left
+% out. 
+
+
+% If you have a file called "university-logo-filename.xxx", where xxx
+% is a graphic format that can be processed by latex or pdflatex,
+% resp., then you can add a logo as follows:
+
+%\logo{\includegraphics[height=0.2cm]{logo.pdf}}
+
+% Delete this, if you do not want the table of contents to pop up at
+% the beginning of each subsection:
+ \AtBeginSection[]
+ {
+   \begin{frame}<beamer>{Outline}
+     \tableofcontents[currentsection]
+   \end{frame}
+}
+ \AtBeginSubsection[]
+ {
+   \begin{frame}<beamer>{Outline}
+     \tableofcontents[currentsection,currentsubsection]
+   \end{frame}
+}
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command: 
+
+%\beamerdefaultoverlayspecification{<+->}
+
+%%%%%%%%%%%%%%%%%%%%<MISC>%%%%%%%%%%%%%%%%%%%%
+% DEFINE NXP COLORS
+\definecolor{nxpN}{RGB}{251,178,28}
+\definecolor{nxpX}{RGB}{110,171,221}
+\definecolor{nxpP}{RGB}{190,213,48}
+
+%\includeonlyframes{current}
+
+%%%%%%%%%%%%%%%%%%%%<START DOCUMENT>%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Outline}
+  \tableofcontents
+\end{frame}
+
+\section{What is CMake ?}
+
+\begin{frame}{What is CMake ?}
+
+\begin{block}{CMake}
+			CMake is a cross-platform, open-source build system. This tool will allow you to test, compile and create packages of your source code.
+\end{block}
+
+\pause
+
+\begin{exampleblock}{Run CMake}
+	In order to run a CMake projet we do:
+\begin{itemize}
+		\item mkdir build
+		\item  cd build
+		\item cmake ..
+		\item make 
+\end{itemize}
+\end{exampleblock}
+
+\end{frame}
+
+\section{A case study}
+
+\begin{frame}{A case study}
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=2cm, minimum height=0.8cm,text centered, draw=black, fill=red!30]
+\tikzstyle{process} = [rectangle, minimum width=2cm, minimum height=0.8cm, text centered, draw=black, fill=orange!30]
+\tikzstyle{file} = [rectangle, minimum width=2cm, minimum height=0.8cm, text centered, draw=black]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+\begin{figure}
+\centering
+\begin{tikzpicture}[node distance=1.5cm]
+%Firts level
+\node (start) [startstop] {Robot Project};
+
+%Second level 
+\node (include) [startstop, below of = start] {include};
+\node (src) [startstop, right of = include, xshift = 1cm] {src};
+\node (example) [startstop, left of = include, xshift = -1cm] {example};
+\node (CMakeList1) [file, left of = example, xshift = -1cm] {CMakeList.txt};
+%Third level 
+\node (rModelh) [process, below of = include, xshift = -1cm] {Robot model};
+\node (rModelc) [process, below of = src, xshift = 1.2cm] {Robot model};
+\node (loadModel) [file, below of = example, xshift = -1cm] {loadModel.cpp};
+\node (CMakeList3) [file, left of = loadModel, xshift = -1cm] {CMakeList.txt};
+\node (CMakeList2) [file, left of = rModelc, xshift = -0.8cm] {CMakeList.txt};
+%Fourth level 
+\node (modelh) [file, below of = rModelh] {model.h};
+\node (modelcpp) [file, below of = rModelc] {model.cpp};
+
+\draw [arrow] (start) -- (include);
+\draw [arrow] (start) -- (src);
+\draw [arrow] (start) -- (example);
+\draw [arrow] (example) -- (loadModel);
+\draw [arrow] (include) -- (rModelh);
+\draw [arrow] (src) -- (rModelc);
+\draw [arrow] (rModelc) -- (modelcpp);
+\draw [arrow] (rModelh) -- (modelh);
+\draw [arrow] (start) -- (CMakeList1);
+\draw [arrow] (src) -- (CMakeList2);
+\draw [arrow] (example) -- (CMakeList3);
+\end{tikzpicture}
+\caption{A classical robotic C++ project structure}
+\end{figure}
+	\end{frame}
+
+\begin{frame}{Illustrative case}
+\begin{block}{Project organization}
+		The main project is called "robot project", in which we create sub-directory such as "example","include","src" in order to keep our codes modular. 
+\end{block}
+
+\pause
+\begin{exampleblock}{CMakeList}
+The CMakeList file is very important of several useful design patters for CMake. In this file we precise with "flags" to let cmake know how to build this project. 
+\end{exampleblock}
+\end{frame}
+
+\subsection{CMakeList explication}
+
+\begin{frame}{First CMakeList in "Robot Project"}
+\begin{exampleblock}{Explication}
+We explain the flags written in CMakeList in following: 
+\end{exampleblock}
+\begin{itemize}
+	\item  cmake\_minimum\_require(VERSION 3.11)    \textit{Required version}
+	\item  project(Robot6R)   				 \textit{Name of this project}
+	\item find\_package(cartin REQUIRED COMPONENTS roscpp rospy ..... )  \textit{Find the external package used in this project }
+	\item include\_directories(include \$ \{CATKIN\_INCLUDE\_DIRS\ ... )  \textit{Include the header of external package }
+    \item ADD\_SUBDIRECTORY(examples src include) \textit{ add other sub-directory to project }
+\end{itemize}
+\end{frame}
+
+\begin{frame}{CMakeList in "src"}
+\begin{exampleblock}{Explication}
+In src, we write our own library 
+\end{exampleblock}
+\begin{itemize}
+	\item  set(HEADER\_LIST "give the path to the project include directory")   \textit{In order to include our header to the src}
+	\item  add\_linbrary(robot6R\_library)  				 \textit{Name of this package or library}
+	\item find\_package(cartin REQUIRED COMPONENTS roscpp rospy ..... )  \textit{Find the external package used in this project }
+	\item include\_directories(include \$ \{CATKIN\_INCLUDE\_DIRS\ ... )  \textit{Include the header of external package }
+	\item ADD\_SUBDIRECTORY(examples src include) \textit{ add other sub-directory to project }
+\end{itemize}
+\end{frame}
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%% End

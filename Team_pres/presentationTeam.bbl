@@ -1,0 +1,29 @@
+\newcommand{\etalchar}[1]{$^{#1}$}
+\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
+% \MRhref is called by the amsart/book/proc definition of \MR.
+\providecommand{\MRhref}[2]{%
+  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
+}
+\providecommand{\href}[2]{#2}
+\begin{thebibliography}{ASHO{\etalchar{+}}07}
+
+\bibitem[ASHO{\etalchar{+}}07]{albu2007dlr}
+Alin Albu-Sch{\"a}ffer, Sami Haddadin, Ch~Ott, Andreas Stemmer, Thomas
+  Wimb{\"o}ck, and Gerhard Hirzinger, \emph{The dlr lightweight robot: design
+  and control concepts for robots in human environments}, Industrial Robot: an
+  international journal \textbf{34} (2007), no.~5, 376--385.
+
+\bibitem[BKS{\etalchar{+}}10]{bischoff2010kuka}
+Rainer Bischoff, Johannes Kurth, G{\"u}nter Schreiber, Ralf Koeppe, Alin
+  Albu-Sch{\"a}ffer, Alexander Beyer, Oliver Eiberger, Sami Haddadin, Andreas
+  Stemmer, Gerhard Grunwald, et~al., \emph{The kuka-dlr lightweight robot arm-a
+  new reference platform for robotics research and manufacturing}, ISR 2010
+  (41st International Symposium on Robotics) and ROBOTIK 2010 (6th German
+  Conference on Robotics), VDE, 2010, pp.~1--8.
+
+\bibitem[Bla16]{blanchet2016industrie}
+Max Blanchet, \emph{Industrie 4.0 nouvelle donne industrielle, nouveau
+  mod{\`e}le {\'e}conomique}, Outre-Terre (2016), no.~1, 62--85.
+
+\end{thebibliography}

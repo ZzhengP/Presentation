@@ -1,0 +1,502 @@
+
+
+
+
+%\documentclass[8 pt]{beamer}
+\documentclass[10 pt]{beamer}
+
+\mode<presentation>
+{
+  \usetheme{Madrid}
+  \useoutertheme{infolines}
+  \usecolortheme{beaver}
+  \setbeamercovered{transparent}
+}
+
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+%\usepackage{stmaryrd}
+\usepackage[english]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{times}
+\usepackage{bm}
+\usepackage[OT1]{fontenc}
+%\usepackage{algorithmic}
+\usepackage{verbatim}
+\usepackage{tikz} % TikZ + Libraries
+\usetikzlibrary{arrows,shapes,positioning,shadows,trees}
+\usepackage{pgfplots}
+\usepackage{psfrag}
+\setbeamertemplate{itemize item}[circle]            % First level item
+\setbeamertemplate{itemize subitem}[triangle]       % Second level item
+\setbeamertemplate{itemize subsubitem}[triangle]    % Third level item
+\makeatother
+
+%==================================================
+% Custom Definitions
+
+\newcommand{\RED}{\color[rgb]{0.90,0,0}}
+\newcommand{\BLUE}{\color[rgb]{0,0,0.69}}
+\newcommand{\GREEN}{\color[rgb]{0,0.69,0}}
+\newcommand{\PURPLE}{\color[rgb]{0,0.69,0.69}}
+\newcommand{\BLACK}{\color[rgb]{0,0,0}}
+
+\title[] % (optional, use only with long paper titles)
+{Génération de la trajectoire optimale en ligne avec la garantie de sécurité dans un espace de travail partagé
+}
+
+\author[P. ZHENG] % (optional, use only with lots of authors)
+{ {\bf Pu ZHENG} \\ PhD student, IMAG, Grenoble \\ {\it pu.zheng@univ-grenoble-alpes.fr}}
+
+\institute[IMAG] % (optional, but mostly needed)
+{IMAG}
+% - Use the \inst command only if there are several affiliations.
+% - Keep it simple, no one is interested in your street address.
+
+\date[22/10/2019] % (optional, should be abbreviation of conference name)
+{}
+% - Either use conference name or its abbreviation.
+% - Not really informative to the audience, more for people (including
+%   yourself) who are reading the slides online
+
+\subject{}
+% This is only inserted into the PDF information catalog. Can be left
+% out. 
+
+
+% If you have a file called "university-logo-filename.xxx", where xxx
+% is a graphic format that can be processed by latex or pdflatex,
+% resp., then you can add a logo as follows:
+
+%\logo{\includegraphics[height=0.2cm]{logo.pdf}}
+
+% Delete this, if you do not want the table of contents to pop up at
+% the beginning of each subsection:
+\AtBeginSection[]
+{
+	\begin{frame}
+	\frametitle{Table of Contents}
+	\tableofcontents[currentsection]
+\end{frame}
+}
+ \AtBeginSubsection[]
+ {
+   \begin{frame}<beamer>{Outline}
+     \tableofcontents[currentsection,currentsubsection]
+   \end{frame}
+}
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command: 
+
+%\beamerdefaultoverlayspecification{<+->}
+
+%%%%%%%%%%%%%%%%%%%%<MISC>%%%%%%%%%%%%%%%%%%%%
+% DEFINE NXP COLORS
+\definecolor{nxpN}{RGB}{251,178,28}
+\definecolor{nxpX}{RGB}{110,171,221}
+\definecolor{nxpP}{RGB}{190,213,48}
+
+%\includeonlyframes{current}
+
+%%%%%%%%%%%%%%%%%%%%<START DOCUMENT>%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Outline}
+  \tableofcontents
+\end{frame}
+
+\section{Aspect Général}
+\subsection{Context industriel}
+\begin{frame}
+\begin{block}{Industrie 4.0}
+		\begin{small}
+   L'industrie 4.0 est un terme allemand crée en 2013 pour désigner une nouvelle génération d'usine connectées, numérisées, robotisées et intelligentes. Avec la révolution numérique, les frontières entre le monde physique et digital s'amenuisent pour donner vie à une usine 4.0 interconnectée dans laquelle les collaborateurs, les machines et les produits interagissent. \cite{blanchet2016industrie}
+   	\end{small}
+\end{block}
+\begin{columns}
+	
+\column{0.6\textwidth}
+\begin{figure}
+	\centering
+	\includegraphics[width=0.9\columnwidth, height=.5\textwidth]{figures/industry4.jpg}
+	\caption{L'évolution des différentes générations d'usines. \footnotemark[1]}
+\end{figure}
+\column{0.4\textwidth}
+\begin{itemize}
+	\begin{small}
+	\item Numérisation de l'usine (Ex: machines connectées, iOT, imprimant 3D, etc...  )
+	\item Flexibilité de l'usine et personnalisation de la production (Ex: Cobot)
+	\item De nouveaux outils logistiques (Ex: facilite l'automatisation des processus de l'entrepôt)
+	\item Une usine économe en énergie et en matières premières (Ex: Circular)
+	\end{small}
+\end{itemize}
+\end{columns}
+\footnotetext[1]{https://www.visiativ-industry.fr/industrie-4-0/}
+\end{frame}
+\subsection{Context CIRCULAR}
+\begin{frame}
+\begin{block}{CIRCULAR project}
+	\begin{small}
+	Le projet CIRCULAR se concentre sur les bonnes conditions et les technologies nécessaires pour créer un nouveau système circulaire qui transforme les produits utilisés en nouveau produit. 
+	\end{small}
+\end{block}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.9\columnwidth, height=.45\textwidth]{figures/circular.png}
+	\caption{Schéma représentatif d'un système circulaire}
+\end{figure}
+\end{frame}
+
+\subsection{Robots et l'industrie}
+\begin{frame}
+\begin{block}{L'utilisation des robots en industrie}
+	\begin{small}
+		Les robots sont intensivement utilisés dans l'industrie, où ils effectuent sans relâche des tâches répétitives et avec rigueur. Dans les chaînes de montage de l'industrie automobile, ils y remplacent les ouvriers dans les tâches pénibles et dangereuses
+	\end{small}
+\end{block}
+\begin{columns}
+	\column{0.5\textwidth}
+\begin{figure}
+	\centering
+	\includegraphics[width=0.8\columnwidth, height=0.9\textwidth]{figures/robots.pdf}
+	\caption{source: Jens Schlueter/Getty images \& Franka Emika}
+\end{figure}
+	\column{0.5\textwidth}
+	\begin{figure}
+		\centering
+		\includegraphics[width=1\columnwidth, height=1\textwidth]{figures/CR_market.jpg}
+		
+	\end{figure}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\textbf{Un marché avec une forte potentielle en robot collaboratif:}
+		\begin{figure}
+		\centering
+		\includegraphics[width=0.7\columnwidth, height=0.6\textwidth]{figures/table}
+		\caption{Comparaison entre les robots industriels classiques et les LWR collaboratif. \cite{bischoff2010kuka}}
+	\end{figure}
+\end{frame}
+%\section{Problem statement}
+%\begin{frame}
+%	\begin{block}{Problem statement:}
+	%	 How can we ensure human's safety in a shared workspace with robots? 
+	%\end{block}
+	%\begin{figure}
+%	\centering
+%	\includegraphics[width=0.8\columnwidth, height=0.5\textwidth]{figures/robotHitPerson.png}
+%\end{figure}
+%\end{frame}
+
+\section{Problématique du sujet}
+\begin{frame}
+\begin{block}{Problématique}
+	Comment peut-on assurer la sécurité des travailleurs dans un espace de travail partagé avec les robots collaboratifs? 
+\end{block}
+\begin{figure}
+	\centering
+	\includegraphics[width=0.8\columnwidth, height=0.5\textwidth]{figures/robotHitPerson.png}
+\end{figure}
+\end{frame}
+\begin{frame}
+\large{\textbf{Quelques importantes critères:} }
+\newline
+
+\begin{itemize}
+\item  \textbf{Réactivité:} Le robot doit prendre en compte de façon réactive les nouvelles informations provenant des capteurs pour s'adapter à l'environnement. 
+\item \textbf{Performance:} Le robot doit réaliser ses tâches de façon optimal.
+\item \textbf{Contrainte satisfaction:} Le robot doit toujours vérifier les contraintes. 
+
+\end{itemize}
+\end{frame}
+
+\section{LWR (light-weight robot)}
+\begin{frame}
+
+\begin{block}{LWR}
+	Le robot dédié aux applications dans un espace de travail avec humain. Voici quelques caractéristiques: 
+\end{block}
+\begin{small}
+	
+	\begin{itemize}
+		\item Redondance cinématique pour avoir une approche du bras humain
+		\item Une proportion load-to-weight de 1:1 environ (ou moins)
+		\item Une masse moins de 15~Kg (Fibre carbone) avec un espace de travail plus qu'un mètre.   
+		\item Contrôle au niveau articulaire peut être réaliser à 3kHz
+	\end{itemize}
+\end{small}
+\begin{columns}
+	\column{0.6\textwidth}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.9\columnwidth, height=0.8\textwidth]{figures/DLR_1}
+	\end{figure}
+	\column{0.5\textwidth}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.7\columnwidth, height=0.7\textwidth]{figures/DLR_2}
+		\caption{source: \cite{albu2007dlr}}
+	\end{figure}
+\end{columns}
+\end{frame}
+\begin{frame}
+\textbf{évaluation de la sécurité pour human-robot intéraction: }
+\begin{figure}
+\centering
+\includegraphics[width=0.7\columnwidth, height=0.15\textwidth]{figures/formule_HIC}
+
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=1\columnwidth, height=0.4\textwidth]{figures/HIC}
+\caption{source: \cite{albu2007dlr}}
+\end{figure}
+
+\end{frame}
+
+
+\section{Approche contrôle optimale }
+\begin{frame}
+\begin{block} {Modèle prédictive contrôle}
+MPC est une méthode de contrôle avancée qui détermine l'action de contrôle en résolu en ligne à chaque pas d'échantillonnage de temps un problème d'optimisation en boucle ouverte, basée sur l'état actuel du système. 
+\end{block}
+\begin{columns}
+	\column{0.5\textwidth}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.9\columnwidth, height=0.7\textwidth]{figures/mpc_illu.png}
+		\caption{source: Marco M. Nicotra.}
+	\end{figure}
+\column{0.5\textwidth}
+	\begin{figure}
+	\centering
+	\includegraphics[width=0.9\columnwidth, height=0.7\textwidth]{figures/MPC_plant.png}
+	\caption{source: Manfred Morari ETH zurich}
+\end{figure}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Pourquoi utiliser MPC dans notre travail ? }
+ 	MPC est capable de contrôler des systèmes MIMO (multi-input and multi-output) sous contraintes. L'action n'est pas non seulement déterminée à partir de l'état actuel, mais aussi prendre en compte l'évolution du système et l'environnement dans le future. 
+\end{block}
+\begin{columns}
+\column{0.4\textwidth}
+	\begin{itemize}
+		\item{Définir un objectif}
+		\begin{itemize}
+			\item{Suivie de la trajectoire}
+		\end{itemize}
+		\item{Définir les contraintes}
+		\begin{itemize}
+			\item{Contraintes intrinsèques du robot}
+			\item{Contraintes liées à la sécurité}
+		\end{itemize}
+		\item{Anticipation ou prédiction de l'environnement}
+	\end{itemize}
+
+\column{0.6\textwidth}
+	\begin{figure}
+	\centering
+	\includegraphics[width=0.9\columnwidth, height=0.6\textwidth]{figures/schema_control.pdf}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+\subsection{Linéaire MPC }
+\begin{frame}
+\begin{block}{Modèle linéaire discrétisé pour la prédiction}
+	\begin{equation}
+	x_{k+1}=Ax_k+Bu_k
+	\end{equation}
+	avec, 
+	\begin{align*}
+	x_k&=\begin{bmatrix}q_k\\\dot{q}_k\end{bmatrix}\in\mathbb{R}^{2n},\\
+	A&=\begin{bmatrix}I&I\Delta t\\0&I\end{bmatrix}\in\mathbb{R}^{2n\times 2n},\\
+	B&=\begin{bmatrix}I\frac{\Delta t^2}{2}\\I\Delta t\end{bmatrix}\in\mathbb{R}^{2n\times n}
+	\end{align*}
+\end{block}
+
+\begin{equation}
+\label{mpc_q}
+\underbrace{\begin{bmatrix}x_1\\\vdots\\x_N\end{bmatrix}}_{\textbf{x}}=
+\underbrace{\begin{bmatrix}A\\\vdots\\A^N\end{bmatrix}}_{P_x}x_0+
+\underbrace{\begin{bmatrix}B&0&0\\\vdots&\ddots&0\\A^{N-1}B&\cdots&B\end{bmatrix}}_{P_u}
+\underbrace{\begin{bmatrix}u_{0}\\\vdots\\u_{N-1}\end{bmatrix}}_{\textbf{u}}.
+\end{equation}
+\end{frame}
+
+\begin{frame}
+	L'objectif du schéma linéaire du MPC est: 
+	 \begin{subequations}
+	 	\begin{align}
+	 	\mathop{\mbox{minimize}}_{\textbf{u}}\ \ 
+	 	&\sum_{k=0}^{N-1}\|x_{k+1}-x_{k+1}^\mathit{des}\|^2_{Q}+\|u_k-u_k^\mathit{des}||^2_{R}\label{eq:sp_final:c}\\  
+	 	\mbox{subject to}\ \ 
+	 	&\forall\,k\in\{0,\ldots N-1\},\ \underline{u}\leq u_k\leq\overline{u},\\
+	 	&\forall\,k\in\{1,\ldots N\},\ \underline{q}\leq q_k\leq\overline{q},\\
+	 	&\forall\,k\in\{1,\ldots N-1\},\ \underline{\dot{q}}\leq\dot{q}_k\leq\overline{\dot{q}},\\
+	 	&\dot{q}_N=0\label{eq:sp_final:c7}
+	 	\end{align}
+	 \end{subequations}
+ 
+L'équation (\ref{eq:sp_final:c7})  assure à la fois la faisabilité récurrente et permet d'introduire la notion de "Passive safety" dans notre schéma MPC.
+
+\begin{block}{Passive safety}
+	Il est impossible de garantir qu'il y a aucune collision dans un environnement partiel inconnu, mais au moins on peut garantir s'il y a une collision, le robot est à l'arrêt. 
+\end{block}
+\end{frame}
+
+\subsection{Evitement de la collision en temps continu}
+\begin{frame}
+\begin{columns}
+
+\column{0.5\textwidth}
+\begin{itemize}
+	\item Définir contrainte d'évitement en temps continu
+\end{itemize}
+\begin{figure}
+	\centering
+\includegraphics[width=0.8\columnwidth, height=0.6\textwidth]{figures/illu_continous_separation.pdf}
+\end{figure}
+
+\column{0.5\textwidth}
+\begin{itemize}
+\item $\{r^1,\,r^2,\ldots\}$  sommets liés à la personne: 
+\begin{subequations}\label{eq-ccap}
+	\begin{alignat*}{2}
+	&a_kp_k^j&&\leq b_k,\\
+	&a_kp_{k+1}^j&&\leq b_k,
+	\end{alignat*}
+\end{subequations}
+\item $\{p^1,\,p^2,\ldots\}$  sommets liés au robot:
+\begin{subequations}\label{eq-ccar}
+	\begin{alignat*}{2}
+	&a_kr_k^i&&\geq b_k+d,\\
+	&a_kr_{k+1}^i&&\geq b_k+d,
+	\end{alignat*}
+\end{subequations}
+\end{itemize}
+\end{columns}
+\begin{block}{Plan de séparateur}
+	S'il existe un plan $a_{k}x=b_{k}$ qui sépare les sommets de la personne d'un côté et les sommets du robot d'autre côté durant l'intervalle de temps $t_{k}$ et $t_{k+1}$, alors on dit qu'ils ne sont pas en collision pendant cet intervalle de temps. 
+\end{block}
+\end{frame}
+
+\begin{frame}
+	Notre problème de la planification se divise donc en deux sous problèmes: 
+	\begin{itemize}
+	\item calcule le plan de séparateur: 
+			Pour chaque intervalle de temps $[k,\,k+1]$, $k\in\{0,\ldots N-1\}$, on calcule un plan de séparateur avec un LPs (Linear programming) :
+		%
+		\begin{subequations}\label{eq:lp}
+			\begin{align*}
+			\mathop{\mbox{maximize}}_{a_k,\,b_k,\,d}\ \ &d\\  
+			\mbox{subject to}\ \ 
+			&\forall\,j,\ a_kp_k^j\leq b_k,\\
+			&\forall\,j,\ a_kp_{k+1}^j\leq b_k,\\
+			&\forall\,i,\ a_kr_k^i\geq b_k+d,\\
+			&\forall\,i,\ a_kr_{k+1}^i\geq b_k+d,\\
+			&-1\leq a_k\leq1,\\
+			&1-\varepsilon\leq a_k^p\,a_k^T\leq1
+			\end{align*}
+		\end{subequations}
+	\end{itemize}
+	\end{frame}
+
+
+\begin{frame}
+\begin{itemize}
+
+	\item calcule la trajectoire sans collision avec les plans calculés précédemment: 
+	\begin{subequations}\label{eq:qp}
+		\begin{align*}
+		\mathop{\mbox{min.}}_{\textbf{u}}\ \ 
+		&\sum_{k=0}^{N-1}\|x_{k+1}-x_{k+1}^\mathit{des}\|^2_{Q}+\|u_k-u_k^\mathit{des}||^2_{R}\\  
+		\mbox{s.t.}\ \ 
+		&\forall\,k\in\{0,\ldots N-1\},\ \underline{u}\leq u_k\leq\overline{u},\\
+		&\forall\,k\in\{1,\ldots N\},\ \underline{q}\leq q_k\leq\overline{q},\\
+		&\forall\,k\in\{1,\ldots N-1\},\ \underline{\dot{q}}\leq\dot{q}_k\leq\overline{\dot{q}},\\
+		&\dot{q}_N=0,\\
+		&\forall\,k\in\{0,\ldots N-1\},\ \forall\,i,\nonumber\\
+		&\ \ \ \ \ a_kr^i\left(q_k^p\right)+a_kJ\left(q_k^p\right)\left(q_k-q_k^p\right)\geq b_k+d_\mathit{safe},\\
+		&\forall\,k\in\{0,\ldots N-1\},\ \forall\,i,\nonumber\\
+		& a_kr^i\left(q_{k+1}^p\right)+a_kJ\left(q_{k+1}^p\right)\left(q_{k+1}-q_{k+1}^p\right)\geq b_k+d_\mathit{safe}
+		\end{align*}
+	\end{subequations}
+	\end{itemize}
+\end{frame}
+
+\subsection{Choix de l'horizon de la prédiction}
+\begin{frame}
+\begin{block}{borne inférieur}
+	Le robot doit être en arrêt à la fin de l'horizon de la prédiction  $\rightarrow$ T$_{low}$ = $\frac{V_{max}}{a_{max}}$ 
+\end{block}
+Prenons $V_{max}$ = 2~m.s$^{-1}$ et $a_{max}$ = 10~m.s$^{-2}$ , T$_{low}$ = 0.2~s. 
+
+\begin{block}{borne supérieur}
+	La vitesse de la main de l'humain en situation régulière est 1~m.s$^{-1}$  avec une accélération de 5~m.s$^{-2}$. 
+\end{block}
+Considérons $d_{safe}$ = 20~cm,  T$_{upper}$ = 0.3~s. La prédiction du mouvement de la personne peut être pas du tout précis si on prédit trop. 
+\end{frame}
+\section{Approche perception}
+
+\section{L'environnement de la simulation }
+\begin{frame}
+\begin{block}{Simulation en 2D}
+
+\end{block}
+L'horizon de la prédiction est égale à 0.3~s, le pas d'échantillonnage est 0.05~s, la distance de sécurité est égale à 0.2~m. 
+	\begin{itemize}	
+		\item Non atteignable objectif
+	\end{itemize}
+\begin{columns}
+\column{0.5\textwidth}
+\begin{figure}
+	\centering
+	\includegraphics[width=0.9\columnwidth, height=0.7\textwidth]{figures/N=6_t=3.png}
+\end{figure}
+\column{0.5\textwidth}
+\begin{figure}
+	\centering
+	\includegraphics[width=0.9\columnwidth, height=0.7\textwidth]{figures/Xlim.png}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+ \item	Réaliser une tâche en présence de la pertubartion d'une personne
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.8\columnwidth, height=0.6\textwidth]{figures/combine}
+	\end{figure}
+\end{itemize}
+\end{frame}
+\begin{frame}
+\begin{block}{Simulation en 3D}
+\end{block}
+\end{frame}
+\begin{frame}[allowframebreaks]
+\frametitle{References}
+\bibliographystyle{ieeetr}
+\bibliography{references.bib}
+\end{frame}
+
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%% End
