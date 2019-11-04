@@ -10,4 +10,5 @@
 \beamer@subsectionintoc {4}{2}{Evitement de la collision en temps continu}{19}{0}{4}
 \beamer@subsectionintoc {4}{3}{Choix de l'horizon de la pr\'ediction}{22}{0}{4}
 \beamer@sectionintoc {5}{Approche perception}{23}{0}{5}
-\beamer@sectionintoc {6}{L'environnement de la simulation }{24}{0}{6}
+\beamer@subsectionintoc {5}{1}{Les capteurs utilis\'es en perception }{26}{0}{5}
+\beamer@sectionintoc {6}{L'environnement de la simulation }{27}{0}{6}

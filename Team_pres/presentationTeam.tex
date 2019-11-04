@@ -13,7 +13,7 @@
   \setbeamercovered{transparent}
 }
 
-
+\usepackage{subcaption}
 \usepackage{amsmath}
 \usepackage{amssymb}
 %\usepackage{stmaryrd}
@@ -29,8 +29,8 @@
 \usepackage{pgfplots}
 \usepackage{psfrag}
 \setbeamertemplate{itemize item}[circle]            % First level item
-\setbeamertemplate{itemize subitem}[triangle]       % Second level item
-\setbeamertemplate{itemize subsubitem}[triangle]    % Third level item
+\setbeamertemplate{itemize subitem}[rectangular]       % Second level item
+\setbeamertemplate{itemize subsubitem}[-]    % Third level item
 \makeatother
 
 %==================================================
@@ -105,7 +105,7 @@
 
 
 \begin{document}
-
+	
 \begin{frame}
   \titlepage
 \end{frame}
@@ -224,7 +224,7 @@
 \section{LWR (light-weight robot)}
 \begin{frame}
 
-\begin{block}{LWR}
+\begin{block}{Franka Emika}
 	Un robot dédié aux applications dans un espace de travail partagé avec un humain. Voici quelques caractéristiques: 
 \end{block}
 \begin{small}
@@ -236,19 +236,12 @@
 		\item Contrôle au niveau articulaire peut être réaliser à 3kHz
 	\end{itemize}
 \end{small}
-\begin{columns}
-	\column{0.6\textwidth}
+
 	\begin{figure}
 		\centering
-		\includegraphics[width=0.9\columnwidth, height=0.8\textwidth]{figures/DLR_1}
+		\includegraphics[width=0.8\columnwidth, height=0.4\textwidth]{figures/Franka}
 	\end{figure}
-	\column{0.5\textwidth}
-	\begin{figure}
-		\centering
-		\includegraphics[width=0.7\columnwidth, height=0.7\textwidth]{figures/DLR_2}
-		\caption{source: \cite{albu2007dlr}}
-	\end{figure}
-\end{columns}
+
 \end{frame}
 \begin{frame}
 \textbf{évaluation de la sécurité de l'interaction pour homme-robot par HIC (Head Injury Criteria) : }
@@ -453,6 +446,82 @@ Prenons $V_{max}$ = 2~m.s$^{-1}$ et $a_{max}$ = 10~m.s$^{-2}$ , T$_{low}$ = 0.2~
 Considérons $d_{safe}$ = 20~cm,  T$_{upper}$ = 0.3~s. La prédiction du mouvement de la personne peut être pas du tout précis si on essaie prédire trop loin dans le futur. 
 \end{frame}
 \section{Approche perception}
+\begin{frame}
+\begin{columns}
+		\column{0.5\textwidth}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.9\columnwidth, height=1\textwidth]{figures/Perception}
+	\end{figure}
+
+
+		\column{0.5\textwidth}
+		
+		\begin{itemize}
+		 \item	A way to know the world's environnement		
+		 \item Collision avoidance
+		 \item Environnement interaction 
+		 \item Realize a task 
+		 \item sensors varing according to:
+		 	\begin{itemize}
+		 		\item physical principle
+		 		\item resolution
+		 		\item bandwidth
+		 		\item price
+		 		\item energy needed
+		 	\end{itemize}
+		\end{itemize}
+	
+	
+\end{columns}
+\end{frame}
+\begin{frame}
+	\begin{figure}
+	\centering
+	\includegraphics[width=0.85\columnwidth, height=0.6\textwidth]{figures/sensor}
+	\caption{from ETH/ Autonomous Systems lab)}
+\end{figure}
+\end{frame}
+\subsection{Les capteurs utilisés en perception }
+\begin{frame}
+\textbf{The most commonly used sensors in perception: }
+\begin{columns}
+\column{0.5\textwidth}
+\begin{itemize}
+	\item Laser Range Sensor: 
+	\item 3D Laser Range Sensor: 
+	\item Structured Light 	 
+	\item Time of Flight Camera 
+\end{itemize}
+		\column{0.5\textwidth}
+		
+		\begin{figure}[ht] 
+	\begin{subfigure}[b]{0.5\linewidth}
+		\centering
+		\includegraphics[width=0.75\linewidth]{figures/hokuyo} 
+		\caption{Initial condition} 
+		
+	\end{subfigure}%% 
+	\begin{subfigure}[b]{0.5\linewidth}
+		\centering
+		\includegraphics[width=0.75\linewidth]{figures/kinect_V1} 
+		\caption{Rupture} 
+		
+	\end{subfigure} 
+	\begin{subfigure}[b]{0.5\linewidth}
+		\centering
+		\includegraphics[width=0.75\linewidth]{figures/3D_laser} 
+		
+	\end{subfigure}%%
+	\begin{subfigure}[b]{0.5\linewidth}
+		\centering
+		\includegraphics[width=0.75\linewidth]{figures/kinect} 
+		
+	\end{subfigure} 
+\end{figure}
+\end{columns}
+\end{frame}
+
 
 \section{L'environnement de la simulation }
 \begin{frame}
